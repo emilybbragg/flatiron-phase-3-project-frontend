@@ -9,8 +9,7 @@ function NavBar() {
       <Navbar bg="light" variant="light" className="navBar">
         <div className="navContainer">
          <div className="title">Don't Sweat It</div>
-         <Nav className="me-auto">
-          <Nav.Link as={NavLink} to="/">Home</Nav.Link>
+         <Nav className="navLinks">
           <Nav.Link as={NavLink} to="/exerciselist">Exercises</Nav.Link>
           <Nav.Link as={NavLink} to="/workoutlist">Workouts</Nav.Link>
          </Nav>
