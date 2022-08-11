@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import Exercise from "./Exercise";
+import NavBar from "./NavBar";
 
 function ExerciseList() {
 
     const [exercises, setExercises] = useState([]);
     const [exerciseName, setExerciseName] = useState("");
-    const [exerciseCategory, setExerciseCategory] = useState("");
+    const [exerciseCategory, setExerciseCategory] = useState("Select Category");
     const [exerciseDescription, setExerciseDescription] = useState("");
 
     useEffect(() => {
@@ -18,6 +19,14 @@ function ExerciseList() {
         .then((exercises) => {
           setExercises(exercises)
         })
+      }
+
+      function handleExerciseDeleteClick(exercise) {
+        fetch(`http://localhost:3000/exercises/${exercise.id}`, {
+          method: "DELETE",
+        })
+          .then((r) => r.json())
+          .then(() => handleDeleteExercise(exercise))
       }
 
       function handleExerciseSubmit(e) {
@@ -39,7 +48,7 @@ function ExerciseList() {
             const allExercisesWithNew = [...exercises, newExercise]
             setExercises(allExercisesWithNew);
             setExerciseName("");
-            setExerciseCategory("");
+            setExerciseCategory("Select Category");
             setExerciseDescription("");
           })
       }
@@ -50,20 +59,23 @@ function ExerciseList() {
       }
 
       const allExercises = exercises.map((exercise) => {
-        return <Exercise key={exercise.id} exercise={exercise} handleExerciseDelete={handleDeleteExercise}/>
+        return <Exercise key={exercise.id} exercise={exercise} handleExerciseDeleteClick={handleExerciseDeleteClick}/>
       });
 
       return (
         <main>
-          <div className="exerciseTitle">Current Exercises</div>
+            <NavBar />
+            <div className="exerciseWrap">
+          <div className="exerciseTitle">Available Exercises</div>
             <ul className="exerciseList">
               {allExercises}
             </ul>
+            </div>
           <div className="exerciseSubmission">
-            <div className="exerciseFormTitle">Add A New Exercise:</div>
+            <div className="exerciseFormTitle">Add A New Exercise</div>
               <form className="exerciseForm" onSubmit={handleExerciseSubmit}>
                 <div className="nameInput">
-                  <label htmlFor="name-input">Exercise:</label>
+                  <label htmlFor="name-input">Name:</label>
                   <input id="name-input" type="text" value={exerciseName} onChange={(e) => setExerciseName(e.target.value)} />
                 </div>
                 <div className="descriptionInput">
@@ -75,6 +87,7 @@ function ExerciseList() {
                  <option value="Glutes">Glutes</option>
                  <option value="Biceps">Biceps</option>
                  <option value="Legs">Legs</option>
+                 <option value="Other">Other</option>
                 </select>
                 <input type="submit" className="submitButton"/>
               </form>
