@@ -5,9 +5,305 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url("https://i.pinimg.com/564x/c4/a5/6b/c4a56bdbff9c50acb3fa865763513030.jpg")
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* Home */
+.greeting {
+  padding: 10px;
+  margin-top: 25px;
+  background-color:#87A96B;
+  text-align: center;
+  font-size: 50px;
+  font-family: "Andale Mono", AndaleMono, monospace;
+}
+
+.greetingLink {
+  padding: 20px;
+  margin-top: 500px;
+  color: white;
+  background-color: #87A96B;
+  text-align: center;
+  font-size: 30px;
+  font-family: "Andale Mono", AndaleMono, monospace;
+}
+
+.greetingContainer {
+  background-image: url("https://i.pinimg.com/564x/d3/3d/5b/d33d5b78e541d82fc39b0349f060903a.jpg");
+}
+
+/* NavBar */
+.navigation {
+  margin: auto;
+  text-align: center;
+  width: 65%;
+  padding: 10px;
+  background-color: #87A96B;
+  border-radius: 25px;
+  opacity: .6;
+}
+
+.title {
+  padding: 0.5rem 0.5rem;
+  font-size: 50px;
+  font-family: "Andale Mono", AndaleMono, monospace;
+  padding: 10px;
+  font-weight: bold;
+  color: white;
+}
+
+.navLinks {
+  justify-content: center;
+  font-family: "Andale Mono", AndaleMono, monospace;
+  font-size: 25px;
+  display: flex;
+  gap: 2rem;
+  background-color: white;
+  width: 100%;
+  border-radius: 5px;
+}
+
+
+/* Exercise - need delete button */
+
+.exerciseItemContainer {
+  width: 50%;
+}
+
+.exerciseItems {
+  background-color: white;
+  color: #778899;
+  border-radius: 25px;
+  height: 100px;
+  width: 185%;
+  padding-left: 20px;
+}
+
+
+/* ExerciseList */
+
+.exerciseTitle {
+  color:white;
+  font-family: "Andale Mono", AndaleMono, monospace;
+  font-size: 25px;
+  text-align: center;
+  padding: 10px;
+}
+
+.exerciseWrap {
+  background-color: #87A96B;
+  width: 60%;
+  float: right;
+  min-height: 600px;
+  margin-right: 40px;
+  border-radius: 25px;
+  opacity: .6;
+  margin-top: 50px;
+}
+
+.exerciseFormTitle {
+  text-align: center;
+  color:white;
+  font-size: 25px;
+  padding: 10px;
+  font-family: "Andale Mono", AndaleMono, monospace;
+}
+
+.exerciseSubmission {
+  background-color: #87A96B;
+  width: 25%;
+  opacity: .6;
+  min-height: 400px;
+  margin-left: 75px;
+  border-radius: 25px;
+  margin-top: 200px;
+}
+
+.exerciseNameInput {
+  margin-left: 150px;
+  margin-top: 20px;
+}
+
+.exerciseDescription {
+  margin-right: 50px;
+  margin-left: 85px;
+  margin-top: 50px;
+}
+
+.descriptionInput {
+  color: white;
+  font-family: "Andale Mono", AndaleMono, monospace;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#description-input {
+  width: 90%;
+  height: 50px;
+}
+
+.nameInput {
+  color: white;
+  font-family: "Andale Mono", AndaleMono, monospace;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#name-input {
+  width: 90%;
+  height: 50px;
+}
+
+.exerciseSubmit {
+  background-color: white;
+  color: #778899;
+  font-size: 18px;
+  font-family: "Andale Mono", AndaleMono, monospace;
+  border-color: white;
+  margin-left: 250px;
+  margin-top: 60px;
+}
+
+#category {
+  font-family: "Andale Mono", AndaleMono, monospace;
+  height: 30px;
+  width: 125px;
+}
+
+.submitButton {
+  font-family: "Andale Mono", AndaleMono, monospace;
+  height: 30px;
+  width: 75px;
+}
+
+.exerciseForm {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+}
+
+
+
+
+/* Workout */
+
+.workoutItemContainer {
+  width: 50%;
+}
+
+.workoutItems {
+  background-color: white;
+  color: #778899;
+  border-radius: 25px;
+  height: 100px;
+  width: 185%;
+  padding-left: 20px;
+}
+
+/* WorkoutList */
+
+.workoutTitle {
+  color:white;
+  font-family: "Andale Mono", AndaleMono, monospace;
+  font-size: 20px;
+  text-align: center;
+  padding: 10px;
+}
+
+.workoutWrap {
+  background-color: #87A96B;
+  width: 60%;
+  float: right;
+  min-height: 600px;
+  margin-right: 40px;
+  border-radius: 25px;
+  opacity: .6;
+  margin-top: 50px;
+}
+
+.workoutFormTitle {
+  text-align: center;
+  color:white;
+  font-size: 25px;
+  padding: 10px;
+  font-family: "Andale Mono", AndaleMono, monospace;
+}
+
+.workoutSubmission {
+  background-color: #87A96B;
+  width: 25%;
+  opacity: .6;
+  min-height: 400px;
+  margin-left: 75px;
+  border-radius: 25px;
+  margin-top: 200px;
+}
+
+.workoutNameInput {
+  margin-left: 150px;
+  margin-top: 20px;
+}
+
+.workoutDescription {
+  margin-right: 50px;
+  margin-left: 85px;
+  margin-top: 50px;
+}
+
+.workoutSubmit {
+  background-color: white;
+  color: #778899;
+  font-size: 18px;
+  font-family: "Andale Mono", AndaleMono, monospace;
+  border-color: white;
+  margin-left: 250px;
+  margin-top: 60px;
+}
+
+.descriptionInput {
+  color: white;
+  font-family: "Andale Mono", AndaleMono, monospace;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#description-input {
+  width: 250px;
+  height: 100px;
+}
+
+.nameInput {
+  color: white;
+  font-family: "Andale Mono", AndaleMono, monospace;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#name-input {
+  width: 250px;
+  height: 50px;
+}
+
+.workoutForm {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+}
+
+.submitButton {
+  font-family: "Andale Mono", AndaleMono, monospace;
+  height: 30px;
+  width: 75px;
+}
+
