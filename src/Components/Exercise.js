@@ -1,6 +1,6 @@
 import React from "react";
 
-function Exercise( {exercise, handleExerciseDelete} ) {
+function Exercise( {exercise, handleExerciseDeleteClick} ) {
 
     return (
         <div className="exerciseItemContainer">
@@ -12,7 +12,7 @@ function Exercise( {exercise, handleExerciseDelete} ) {
             <span>Description: {exercise.description}</span>
             <br></br>
             <button className="deleteButton gg-trash"
-              onClick={() => handleExerciseDelete(exercise)}>
+              onClick={() => handleExerciseDeleteClick(exercise)}>
             </button>
         </li>
         </div>
