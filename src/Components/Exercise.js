@@ -9,7 +9,7 @@ function Exercise( {exercise, handleExerciseDeleteClick} ) {
               <br></br>
               <span>Category: {exercise?.category?.name}</span>
               <br></br>
-              <span>Description: {exercise?.description}</span>
+              Description: {exercise?.description}
               <br></br>
               <button className="deleteButton" onClick={() => handleExerciseDeleteClick(exercise)}>Delete</button>
           </li>
