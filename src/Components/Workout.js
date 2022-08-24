@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 
-function Workout( {workout, handleDeleteWorkout, exerciseArray} ) {
+function Workout( {workout, handleDeleteWorkout, exerciseArray, allExerciseWorkouts} ) {
 
   const [selectedExercises, setSelectedExercises] = useState([])
   const [workoutExercises, setWorkoutExercises] = useState([])
@@ -10,12 +10,23 @@ function Workout( {workout, handleDeleteWorkout, exerciseArray} ) {
     useEffect(() => {
     }, [selectedExercises])
 
+    useEffect(() => {
+      const filteredExerciseWorkouts = allExerciseWorkouts.filter(ew => ew.workout_id == workout.id)
+      const exercisesToReturn = []
+      for (const workoutExercise of filteredExerciseWorkouts) {
+        const foundExercise = exerciseArray.find(exercise => workoutExercise.exercise_id == exercise.id)
+        exercisesToReturn.push(foundExercise)
+      }
+
+      setWorkoutExercises(exercisesToReturn)
+    }, [allExerciseWorkouts])
+
   const allExercises = exerciseArray.map((exercise) => {
     return (
-        <>
+        <li>
             <input type="checkbox" value={exercise.id} defaultChecked={workoutExercises.find(workoutExercise => exercise.id == workoutExercise.id)} name={exercise.name} onChange={(e) => handleSelectExercise(e)}/>
             <label htmlFor={exercise.name}>{exercise.name}</label>
-        </>
+        </li>
     )
   })
 
@@ -62,7 +73,10 @@ function Workout( {workout, handleDeleteWorkout, exerciseArray} ) {
           <br></br>
           <span>Description: {workout.description}</span>
           <br></br>
-          <ul className="workoutExercises">Exercises: {allWorkoutExercises}</ul>
+          <div>
+            <label>Exercises:</label>
+            <ul className="workoutExercises">{allWorkoutExercises}</ul>
+          </div>
           <br></br>
           <Popup trigger={<button className="editButton">Edit</button>}>
             <div className="popupTitle">Select Exercises to Add or Remove:</div>
