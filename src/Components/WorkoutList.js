@@ -8,14 +8,16 @@ function WorkoutList() {
   const [workoutName, setWorkoutName] = useState("");
   const [workoutDescription, setWorkoutDescription] = useState("");
   const [exerciseArray, setExerciseArray] = useState([]);
+  const [allExerciseWorkouts, setAllExerciseWorkouts] = useState([])
 
   useEffect(() => {
       handleGetWorkouts()
       handleGetExercises()
+      handleGetExerciseWorkouts()
   }, [])
 
   const allWorkouts = workouts.map((workout) => {
-    return <Workout key={workout.id} workout={workout} exerciseArray={exerciseArray} handleDeleteWorkout={handleDeleteWorkout}/>
+    return <Workout key={workout.id} workout={workout} exerciseArray={exerciseArray} handleDeleteWorkout={handleDeleteWorkout} allExerciseWorkouts={allExerciseWorkouts}/>
   });
 
   const handleGetExercises = () => {
@@ -33,6 +35,14 @@ function WorkoutList() {
         setWorkouts(workouts)
       })
     }
+
+  const handleGetExerciseWorkouts = () => {
+    return fetch("http://localhost:9292/exercise-workouts")
+    .then((r) => r.json())
+    .then((exerciseWorkouts) => {
+      setAllExerciseWorkouts(exerciseWorkouts)
+    })
+  }
 
   function handleWorkoutSubmit(e) {
     e.preventDefault();
