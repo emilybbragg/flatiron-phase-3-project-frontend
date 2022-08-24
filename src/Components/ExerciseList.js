@@ -122,7 +122,6 @@ function ExerciseList() {
               <option value="" selected disabled hidden>Search By Category</option>
               {allCatsForExercise}
             </select>
-            <input type="submit" className="categorySubmitButton"/>
             <ul className="exerciseList">{allExercises}</ul>
           </div>
           <div className="exerciseSubmission">
