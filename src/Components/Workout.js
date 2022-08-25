@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 
-function Workout( {workout, handleDeleteWorkout, exerciseArray, allExerciseWorkouts} ) {
+function Workout( {workout, handleDeleteWorkout, handleWorkoutDeleteClick, exerciseArray, allExerciseWorkouts} ) {
 
   const [selectedExercises, setSelectedExercises] = useState([])
   const [workoutExercises, setWorkoutExercises] = useState([])
@@ -20,21 +20,6 @@ function Workout( {workout, handleDeleteWorkout, exerciseArray, allExerciseWorko
 
       setWorkoutExercises(exercisesToReturn)
     }, [allExerciseWorkouts])
-
-  const allExercises = exerciseArray.map((exercise) => {
-    return (
-        <li>
-            <input type="checkbox" value={exercise.id} defaultChecked={workoutExercises.find(workoutExercise => exercise.id == workoutExercise.id)} name={exercise.name} onChange={(e) => handleSelectExercise(e)}/>
-            <label htmlFor={exercise.name}>{exercise.name}</label>
-        </li>
-    )
-  })
-
-  const allWorkoutExercises = workoutExercises.map(exercise => {
-        return (
-            <li className="exerciseWorkoutList" key={exercise.id}>{exercise.name}</li>
-        )
-  })
 
   function handleAddExercises(e) {    
       e.preventDefault();
@@ -66,6 +51,21 @@ function Workout( {workout, handleDeleteWorkout, exerciseArray, allExerciseWorko
       setSelectedExercises(exercises)
   }
 
+  const allExercises = exerciseArray.map((exercise) => {
+    return (
+        <li className="checkboxList">
+            <input type="checkbox" value={exercise.id} defaultChecked={workoutExercises.find(workoutExercise => exercise.id == workoutExercise.id)} name={exercise.name} onChange={(e) => handleSelectExercise(e)} handleDeleteWorkout={handleDeleteWorkout}/>
+            <label htmlFor={exercise.name}>{exercise.name}</label>
+        </li>
+    )
+  })
+
+  const allWorkoutExercises = workoutExercises.map(exercise => {
+        return (
+            <li className="exerciseWorkoutList" key={exercise.id}>{exercise.name}</li>
+        )
+  })
+
   return (
     <div className="workoutItemContainer">
         <li className="indivWorkouts">
@@ -86,7 +86,7 @@ function Workout( {workout, handleDeleteWorkout, exerciseArray, allExerciseWorko
             </form>
           </Popup>
           <div class="divider"/>
-          <button className="workoutDeleteButton" onClick={() => handleDeleteWorkout(workout)}>Delete</button>
+          <button className="workoutDeleteButton" onClick={() => handleWorkoutDeleteClick(workout)}>Delete</button>
         </li>
     </div>
   )
