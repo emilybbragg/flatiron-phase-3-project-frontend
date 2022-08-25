@@ -17,7 +17,7 @@ function WorkoutList() {
   }, [])
 
   const allWorkouts = workouts.map((workout) => {
-    return <Workout key={workout.id} workout={workout} exerciseArray={exerciseArray} handleDeleteWorkout={handleDeleteWorkout} allExerciseWorkouts={allExerciseWorkouts}/>
+    return <Workout key={workout.id} workout={workout} allExerciseWorkouts={allExerciseWorkouts} handleDeleteWorkout={handleDeleteWorkout} handleWorkoutDeleteClick={handleWorkoutDeleteClick} exerciseArray={exerciseArray}/>
   });
 
   const handleGetExercises = () => {
