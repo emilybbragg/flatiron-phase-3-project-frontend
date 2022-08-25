@@ -416,3 +416,7 @@ code {
 .checkboxSubmit {
   font-family: "Andale Mono", AndaleMono, monospace;
 }
+
+.checkboxList {
+  list-style: none;
+}
