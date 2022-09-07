@@ -8,7 +8,39 @@ function Workout( {workout, handleDeleteWorkout, handleWorkoutDeleteClick, exerc
   const [workoutExercises, setWorkoutExercises] = useState([])
 
     useEffect(() => {
+      // console.log(exerciseArray)
+      // console.log(allExerciseWorkouts)
+      // const exercisesForWorkout = allExerciseWorkouts.filter(ew => workout.id == ew.workout_id)
+
+      // const exercisesForSelect = []
+
+      // for (const element of exercisesForWorkout) {
+      //   const foundExercise = exerciseArray.find(exercise => exercise.id == element.exercise_id)
+      //   // console.log("FOUND EXERCISE")
+      //   // console.log(foundExercise)
+      //   if (foundExercise) {
+      //     exercisesForSelect.push(foundExercise)
+      //   }
+      // }
+
+      // console.log(exercisesForWorkout)
+      // console.log(exercisesForSelect)
+    }, [exerciseArray, allExerciseWorkouts])
+
+    useEffect(() => {
+      console.log("SELECTED EXERCISES")
+      console.log(selectedExercises)
     }, [selectedExercises])
+
+    useEffect(() => {
+      console.log("WORKOUT EXERCISES")
+      console.log(workoutExercises)
+
+      if (workoutExercises && workoutExercises.length > 0) {
+        const exercisesForSelect = workoutExercises.map(exercise => exercise.id.toString())
+        setSelectedExercises(exercisesForSelect)
+      }
+    }, [workoutExercises])
 
     useEffect(() => {
       const filteredExerciseWorkouts = allExerciseWorkouts.filter(ew => ew.workout_id == workout.id)
@@ -23,9 +55,13 @@ function Workout( {workout, handleDeleteWorkout, handleWorkoutDeleteClick, exerc
 
   function handleAddExercises(e) {    
       e.preventDefault();
+      
       const workoutData = {
         exercises: selectedExercises
       };
+      console.log("SELECTED EXERCISES")
+      console.log(workoutData)
+
       fetch(`http://localhost:9292/workouts/${workout.id}`, {
         method: "PATCH",
         headers: {
@@ -35,6 +71,8 @@ function Workout( {workout, handleDeleteWorkout, handleWorkoutDeleteClick, exerc
       })
       .then((r) => r.json())
       .then((exercisesData) => {
+          console.log("EXERCISES DATA (RESP)")
+          console.log(exercisesData)
           setWorkoutExercises(exercisesData)
       })
   }
