@@ -32,6 +32,7 @@ function WorkoutList() {
       return fetch("http://localhost:9292/workouts")
       .then((r) => r.json())
       .then((workouts) => {
+        console.log(workouts)
         setWorkouts(workouts)
       })
     }
