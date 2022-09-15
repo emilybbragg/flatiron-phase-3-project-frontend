@@ -36,7 +36,6 @@ function ExerciseList() {
     }
   }, [filterCategory])    
 
-  //creating categoryOnChange function; category selection for exercise submission form
   const categoryOnChange = (event) => {
     const foundCategory = allCategories.find(category => category.id == event.target.value)
     setExerciseCategory(foundCategory)   
