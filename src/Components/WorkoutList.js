@@ -16,10 +16,6 @@ function WorkoutList() {
       handleGetExerciseWorkouts()
   }, [])
 
-  const allWorkouts = workouts.map((workout) => {
-    return <Workout key={workout.id} workout={workout} allExerciseWorkouts={allExerciseWorkouts} handleDeleteWorkout={handleDeleteWorkout} handleWorkoutDeleteClick={handleWorkoutDeleteClick} exerciseArray={exerciseArray}/>
-  });
-
   const handleGetExercises = () => {
       return fetch("http://localhost:9292/exercises")
       .then((r) => r.json())
@@ -32,7 +28,6 @@ function WorkoutList() {
       return fetch("http://localhost:9292/workouts")
       .then((r) => r.json())
       .then((workouts) => {
-        console.log(workouts)
         setWorkouts(workouts)
       })
     }
@@ -80,12 +75,16 @@ function WorkoutList() {
     setWorkouts(updatedWorkouts)
   }
 
+  const allWorkouts = workouts.map((workout) => {
+    return <Workout key={workout.id} workout={workout} allExerciseWorkouts={allExerciseWorkouts} handleDeleteWorkout={handleDeleteWorkout} handleWorkoutDeleteClick={handleWorkoutDeleteClick} exerciseArray={exerciseArray}/>
+  });
+
   return (
     <main>
       <NavBar />
         <div className="workoutWrap">
-            <div className="workoutTitle">Available Workouts</div>
-            <ul className="workoutList">{allWorkouts}</ul>
+          <div className="workoutTitle">Available Workouts</div>
+          <ul className="workoutList">{allWorkouts}</ul>
         </div>
         <div className="workoutSubmission">
           <div className="workoutFormTitle">Add A New Workout:</div>
